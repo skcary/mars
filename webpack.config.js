@@ -1,8 +1,8 @@
 const pathTo = require('path');
 const fs = require('fs-extra');
 const webpack = require('webpack');
-const entry = {};
-const weexEntry = {};
+const entry = {index: pathTo.resolve('src', 'entry.js')};
+const weexEntry = {index: pathTo.resolve('src', 'entry.js')};
 const vueWebTemp = 'temp';
 const hasPluginInstalled = fs.existsSync('./web/plugin.js');
 const isWin = /^win/.test(process.platform);
@@ -35,7 +35,8 @@ const walk = (dir) => {
       const fullpath = pathTo.join(directory, file);
       const stat = fs.statSync(fullpath);
       const extname = pathTo.extname(fullpath);
-      if (stat.isFile() && extname === '.vue' || extname === '.we') {
+      const basename = pathTo.basename(fullpath);
+      if (stat.isFile() && (extname === '.vue' || extname === '.we') && basename != 'App.vue') {
         if (!fileType) {
           fileType = extname;
         }
@@ -49,7 +50,7 @@ const walk = (dir) => {
           entry[name] = pathTo.join(__dirname, entryFile) + '?entry=true';
         }
         weexEntry[name] = fullpath + '?entry=true';
-      } else if (stat.isDirectory() && file !== 'build' && file !== 'include') {
+      } else if (stat.isDirectory() && file !== 'build' && file !== 'include'  && ['build','include','assets','filters','mixins'].indexOf(file) == -1) {
         const subdir = pathTo.join(dir, file);
         walk(subdir);
       }
@@ -66,9 +67,9 @@ const plugins = [
    * Description: UglifyJS plugin for webpack
    * See: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
    */
-  new webpack.optimize.UglifyJsPlugin({
-    minimize: true
-  }),
+  // new webpack.optimize.UglifyJsPlugin({
+  //   minimize: true
+  // }),
   /*
    * Plugin: BannerPlugin
    * Description: Adds a banner to the top of each generated chunk.

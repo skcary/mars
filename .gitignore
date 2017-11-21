@@ -50,6 +50,7 @@ android/playground/app/gradle/wrapper/gradle-wrapper.properties
 android/sdk/.externalNativeBuild/ndkBuild/
 
 platforms
+temp
 
 # doc
 doc/Thumbs.db
