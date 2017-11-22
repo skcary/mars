@@ -21,7 +21,7 @@
     },
     methods: {
       update: function (e) {
-        this.target = 'Weex'
+        this.target = 'Weexxxx'
         console.log('target:', this.target)
       }
     }
