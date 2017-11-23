@@ -36,7 +36,7 @@ const walk = (dir) => {
     const stat = fs.statSync(fullpath);
     const extname = pathTo.extname(fullpath);
     const basename = pathTo.basename(fullpath);
-    if (stat.isFile() && (extname === '.vue' || extname === '.we') && basename != 'App.vue') {
+    if (stat.isFile() && extname === '.vue' && basename != 'App.vue') {
       if (!fileType) {
         fileType = extname;
       }
@@ -50,7 +50,7 @@ const walk = (dir) => {
         entry[name] = pathTo.join(__dirname, entryFile) + '?entry=true';
       }
       weexEntry[name] = fullpath + '?entry=true';
-    } else if (stat.isDirectory() && file !== 'build' && file !== 'include' && ['build', 'include', 'assets', 'filters', 'mixins'].indexOf(file) == -1) {
+    } else if (stat.isDirectory() && file !== 'build' && file !== 'include' && ['build', 'include', 'components', 'filters', 'mixins', 'views'].indexOf(file) == -1) {
       const subdir = pathTo.join(dir, file);
       walk(subdir);
     }
@@ -95,7 +95,7 @@ const webConfig = {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'source-map',
+  // devtool: 'source-map',
   /*
    * Options affecting the resolving of modules.
    *
