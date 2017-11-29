@@ -1,5 +1,5 @@
 <template>
-  <div @androidback="back" class="wrap">
+  <div @androidback="back" class="wrapper">
     <router-view style="flex:1"></router-view>
     <tab-bar @tabTo="onTabTo"></tab-bar>
   </div>
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-.wrap {
+.wrapper {
   position: absolute;
   top: 0;
   left: 0;
