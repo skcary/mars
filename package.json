@@ -23,6 +23,7 @@
     "vuex": "^2.1.1",
     "vuex-router-sync": "^4.3.0",
     "weex-html5": "^0.4.1",
+    "weex-ui": "^0.2.10",
     "weex-vue-render": "^0.12.21"
   },
   "devDependencies": {
