@@ -67,9 +67,9 @@ const plugins = [
    * Description: UglifyJS plugin for webpack
    * See: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
    */
-  new webpack.optimize.UglifyJsPlugin({
-    minimize: true
-  }),
+  // new webpack.optimize.UglifyJsPlugin({
+  //   minimize: true
+  // }),
   /*
    * Plugin: BannerPlugin
    * Description: Adds a banner to the top of each generated chunk.
@@ -111,9 +111,22 @@ const webConfig = {
       exclude: /node_modules(?!\/.*(weex).*)/
     }, {
       test: /\.vue(\?[^?]+)?$/,
-      use: [{
-        loader: 'vue-loader'
-      }]
+      loader: 'vue-loader',
+      // /weex/weex-vue-render/wikis/build-bundle
+      options: {
+        /**
+         * important! should use postTransformNode to add $processStyle for
+         * inline style normalization.
+         */
+        compilerModules: [
+          {
+            postTransformNode: el => {
+              el.staticStyle = `$processStyle(${el.staticStyle})`
+              el.styleBinding = `$processStyle(${el.styleBinding})`
+            }
+          }
+        ]
+      }
     }]
   },
   /*
