@@ -24,6 +24,7 @@
 </template>
 
 <script>
+const modal = weex.requireModule('modal');
 // import { WxcEpSlider, WxcPanItem, Utils } from "weex-ui";
 import WxcEpSlider from "weex-ui/packages/wxc-ep-slider";
 import WxcPanItem from "weex-ui/packages/wxc-pan-item";
@@ -50,8 +51,11 @@ export default {
   },
   methods: {
     wxcEpSliderCurrentIndexSelected(e) {
-      // const index = e.currentIndex;
-      // console.log(index);
+      const index = e.currentIndex;
+      // modal.toast({
+      //   message: index,
+      //   duration: 1
+      // });
     },
     onClick() {
       // 手动切换到第2张
