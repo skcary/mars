@@ -1,10 +1,9 @@
 <template>
   <div class="wrapper">
+    <!-- 头部 -->
+    <home-header></home-header>
     <list style="flex:1">
-      <!-- 头部 -->
-      <cell>
-        <home-header></home-header>
-      </cell>
+      <home-refresh @loadingDown="loadingDown"></home-refresh>
       <!-- 轮播 -->
       <cell>
         <div class="space"></div>
@@ -19,6 +18,9 @@
         <div class="space"></div>
         <ads-banner :list="adBannerList"></ads-banner>
       </cell>
+      <loading class="loading" @loading="onloading" :display="showLoading">
+          <text class="indicator">...</text>
+      </loading>
     </list>
   </div>
 </template>
@@ -26,14 +28,16 @@
 <script>
 import data from "../data";
 import HomeHeader from "../components/HomeHeader.vue";
+import HomeRefresh from "../components/HomeRefresh.vue";
 import HomeBanner from "../components/HomeBanner.vue";
 import HomeTag from "../components/HomeTag.vue";
 import AdsBanner from "../components/AdsBanner.vue";
 export default {
-  components: { HomeHeader, HomeBanner, HomeTag, AdsBanner },
+  components: { HomeHeader, HomeRefresh, HomeBanner, HomeTag, AdsBanner },
   data() {
     return {
-      bannerList: null
+      bannerList: null,
+      showLoading: "hide"
     };
   },
   created() {
@@ -41,7 +45,16 @@ export default {
     this.homeTagList = data.ht;
     this.adBannerList = data.b;
   },
-  mounted() {}
+  mounted() {},
+  methods: {
+    loadingDown() {},
+    onloading() {
+      this.showLoading = "show";
+      setTimeout(() => {
+        this.showLoading = "hide";
+      }, 600);
+    }
+  }
 };
 </script>
 

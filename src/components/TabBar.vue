@@ -1,22 +1,22 @@
 <template>
-    <div class="wrap">
-        <div class="bar-item" @click="tabTo('home')">
-            <text class="bar-ic iconfont" :class="curKey=='home'?'bar-active':''">&#xe660;</text>
-            <text class="bar-txt" :class="curKey=='home'?'bar-active':''">首页</text>
-        </div>
-        <div class="bar-item" @click="tabTo('topic')">
-            <text class="bar-ic iconfont" :class="curKey=='topic'?'bar-active':''">&#xe744;</text>
-            <text class="bar-txt" :class="curKey=='topic'?'bar-active':''">专题</text>
-        </div>
-        <div class="bar-item active" @click="tabTo('class')">
-            <text class="bar-ic iconfont" :class="curKey=='class'?'bar-active':''">&#xe605;</text>
-            <text class="bar-txt" :class="curKey=='class'?'bar-active':''">分类</text>
-        </div>
-        <div class="bar-item" @click="tabTo('my')">
-            <text class="bar-ic iconfont" :class="curKey=='my'?'bar-active':''">&#xe639;</text>
-            <text class="bar-txt" :class="curKey=='my'?'bar-active':''">我的</text>
-        </div>
+  <div class="wrap">
+    <div class="bar-item" @click="tabTo('home')">
+      <text class="bar-ic iconfont" :class="[curKey=='home'?'bar-active':'']">&#xe660;</text>
+      <text class="bar-txt" :class="[curKey=='home'?'bar-active':'']">首页</text>
     </div>
+    <div class="bar-item" @click="tabTo('topic')">
+      <text class="bar-ic iconfont" :class="[curKey=='topic'?'bar-active':'']">&#xe744;</text>
+      <text class="bar-txt" :class="[curKey=='topic'?'bar-active':'']">专题</text>
+    </div>
+    <div class="bar-item active" @click="tabTo('class')">
+      <text class="bar-ic iconfont" :class="[curKey=='class'?'bar-active':'']">&#xe605;</text>
+      <text class="bar-txt" :class="[curKey=='class'?'bar-active':'']">分类</text>
+    </div>
+    <div class="bar-item" @click="tabTo('my')">
+      <text class="bar-ic iconfont" :class="[curKey=='my'?'bar-active':'']">&#xe639;</text>
+      <text class="bar-txt" :class="[curKey=='my'?'bar-active':'']">我的</text>
+    </div>
+  </div>
 </template>
 
 <script>
