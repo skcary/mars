@@ -18,6 +18,9 @@
         <div class="space"></div>
         <ads-banner :list="adBannerList"></ads-banner>
       </cell>
+      <cell>
+        
+      </cell>
       <loading class="loading" @loading="onloading" :display="showLoading">
           <text class="indicator">...</text>
       </loading>
